@@ -1,0 +1,44 @@
+<h4>{{mensaje}}</h4>
+      <h4>invertido: {{invertido}}</h4>
+      <input type="text" class="form-control" v-model="mensaje" />
+      <hr />
+      <button class="btn btn-primary" v-on:click="contador++">+</button>
+      <button class="btn btn-primary" v-on:click="contador--">-</button>
+      <div class="progress">
+        <div
+          class="progress-bar"
+          role="progressbar"
+          :style="{'width': contador + '%'}"
+          aria-valuenow="25"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          :class="color"
+        >
+          {{contador}}%
+        </div>
+      </div>
+
+      <h3>{{contador}}</h3>
+
+------------------
+
+
+const app = new Vue({
+  el: "#app",
+  data: {
+    mensaje: "Hola soy Federico",
+    contador: 0,
+  },
+  computed: {
+    invertido() {
+      return this.mensaje.split("").reverse().join("");
+    },
+    color() {
+      return {
+        "bg-success": this.contador <= 10,
+        "bg-warning": this.contador > 10 && this.contador < 20,
+        "bg-danger": this.contador >= 20,
+      };
+    },
+  },
+});
