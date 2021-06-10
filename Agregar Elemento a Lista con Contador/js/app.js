@@ -13,7 +13,7 @@ const app = new Vue({
     agregarFruta() {
       this.frutas.push({
         nombre: this.nuevaFruta,
-        cantidad: 0,
+        cantidad: Math.round(Math.random() * 100),
       });
       this.nuevaFruta = "";
     },
